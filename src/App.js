@@ -17,10 +17,6 @@ class App extends Component {
   };
 
   render() {
-    const display = posts.map((post) => {
-      return <Post post={post} />;
-    });
-
     return (
       <div className="App">
         <h1>Welcome to BrainHive!</h1>
