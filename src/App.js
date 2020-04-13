@@ -1,32 +1,30 @@
-import React, {Component} from 'react';
-import './App.css';
-import Post from './components/Post'
+import React, { Component } from "react";
+import "./App.css";
+import Post from "./components/Post";
+import posts from "./mock/posts";
 
 class App extends Component {
-  post = {
-    posterName: 'Arnell Milhouse',
-    resourceAuthor: 'Albert Einstein',
-    jobSkillLevel: 'Advanced',
-    cohort: '0',
-    title: 'The Universal Equation',
-    categories: ['FORTRAN', 'redux'],
-    summary: "This was a great article about blending fortran and redux.",
-    link: 'www.google.com/search?q=Albert%20Einstein',
-    resourceType: 'Article',
-    datePublished: '1943-10-03.00:00:00z',
-    videoLength: null,
-    timeToComplete: 3,
-    rating: 5,
-    comments: [{commenter: "Cliff", text: 'Nice post'}]
-  }
+  renderPosts = () => {
+    // const mapFunction = (post) => {
+    //   return <Post post={post} />;
+    // };
+
+    const display = posts.map((post) => {
+      return <Post post={post} />;
+    });
+    // [<Post post=[0]/>, <Post post[1]/>, <Post post[2]/>]
+    return display;
+  };
 
   render() {
+    const display = posts.map((post) => {
+      return <Post post={post} />;
+    });
+
     return (
       <div className="App">
         <h1>Welcome to BrainHive!</h1>
-        <Post post={this.post}/>
-        <Post post={this.post}/>
-        <Post post={this.post}/>
+        {this.renderPosts()}
       </div>
     );
   }
