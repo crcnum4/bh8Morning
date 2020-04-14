@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 0 8%;
 }
 
 .App-logo {
@@ -38,6 +39,20 @@
 }
 
 .box {
-  border: 1px solid blue;
-  /* background-color: green; */
+  border: 1px solid #f6f6f6;
+  border-radius: 8px;
+  border-bottom-width: 0px;
+  box-shadow: 1px 10px 20px #000000;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 700px;
+  background-color: #f7f7f7;
+}
+
+.postList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
