@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  margin: 0 8%;
 }
 
 .App-logo {
@@ -51,15 +50,7 @@
 }
 
 .box:hover {
-  border: 1px solid #f6f6f6;
-  border-radius: 8px;
-  border-bottom-width: 0px;
-  margin-bottom: 20px;
-  padding-bottom: 8px;
-  width: 80%;
-  max-width: 700px;
-  box-shadow: 1px 10px 20px #000000;
-  background-color: #f7f7f7;
+  box-shadow: 15px 9px 15px black;
 }
 
 .postList {
@@ -67,4 +58,27 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: 0 8%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: lightblue;
+  padding: 0 3vw;
+  margin-bottom: 16px;
+}
+
+#brand {
+  flex: 1;
+  display: flex;
+  /* background-color: green; */
+}
+
+#navigation {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
 }

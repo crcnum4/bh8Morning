@@ -3,6 +3,8 @@ import "./App.css";
 import Post from "./components/Post";
 import posts from "./mock/posts";
 
+import PostForm from "./components/PostForm";
+
 class App extends Component {
   renderPosts = () => {
     // const mapFunction = (post) => {
@@ -19,8 +21,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Welcome to BrainHive!</h1>
+        <div className="header">
+          <h1 id="brand">Welcome to BrainHive!</h1>
+          <div id="navigation">
+            <a href="">Add Post</a>
+          </div>
+        </div>
         <div className="postList">{this.renderPosts()}</div>
+        <PostForm />
       </div>
     );
   }
