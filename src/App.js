@@ -6,12 +6,23 @@ import posts from "./mock/posts";
 import PostForm from "./components/PostForm";
 
 class App extends Component {
+  state = {
+    posts: [...posts],
+  };
+
+  addPost = (postData) => {
+    console.log("hello", postData);
+    this.setState({
+      posts: [...this.state.posts, postData],
+    });
+  };
+
   renderPosts = () => {
     // const mapFunction = (post) => {
     //   return <Post post={post} />;
     // };
 
-    const display = posts.map((post) => {
+    const display = this.state.posts.map((post) => {
       return <Post post={post} />;
     });
     // [<Post post=[0]/>, <Post post[1]/>, <Post post[2]/>]
@@ -28,7 +39,7 @@ class App extends Component {
           </div>
         </div>
         <div className="postList">{this.renderPosts()}</div>
-        <PostForm />
+        <PostForm addPost={this.addPost} />
       </div>
     );
   }
