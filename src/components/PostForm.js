@@ -56,6 +56,7 @@ class PostForm extends Component {
         <form style={myStyles.form} onSubmit={(e) => this.handleSubmit(e)}>
           {/* <label htmlFor="posterName">Your Name: </label> */}
           <input
+            style={myStyles.input}
             type="text"
             id="posterName"
             placeholder="Your Name"
@@ -64,6 +65,7 @@ class PostForm extends Component {
             required
           />
           <input
+            style={myStyles.input}
             type="text"
             id="resourceAuthor"
             placeholder="Author Name"
@@ -71,21 +73,21 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           {/* dropdown skill level */}
-          <div>
-            <select
-              id="jobSkillLevel"
-              value={this.state.jobSkillLevel}
-              onChange={(e) => this.handleChange(e)}
-            >
-              <option value="" disabled>
-                Author skill level
-              </option>
-              <option value="Intro">Intro</option>
-              <option value="Intermediate">Intermediate</option>
-              <option value="Advanced">Advanced</option>
-            </select>
-          </div>
+          <select
+            style={myStyles.input}
+            id="jobSkillLevel"
+            value={this.state.jobSkillLevel}
+            onChange={(e) => this.handleChange(e)}
+          >
+            <option value="" disabled>
+              Author skill level
+            </option>
+            <option value="Intro">Intro</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
           <input
+            style={myStyles.input}
             type="text"
             id="cohort"
             placeholder="Cohort #"
@@ -93,6 +95,7 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="text"
             id="title"
             placeholder="title"
@@ -100,6 +103,7 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="text"
             id="categories"
             placeholder="Categories (seperate multiples with commas)"
@@ -107,6 +111,7 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="text"
             id="link"
             placeholder="Resource Link"
@@ -114,6 +119,7 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="text"
             id="resourceType"
             placeholder="Resource Type"
@@ -121,6 +127,7 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="date"
             id="datePublished"
             placeholder="Published Date"
@@ -128,6 +135,7 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="text"
             id="videoLength"
             placeholder="Length of Video (optional)"
@@ -135,6 +143,7 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="text"
             id="timeToComplete"
             placeholder="Time to complete resource"
@@ -142,13 +151,16 @@ class PostForm extends Component {
             onChange={(e) => this.handleChange(e)}
           />
           <input
+            style={myStyles.input}
             type="number"
             id="rating"
             placeholder="1 to 5 rating"
             value={this.state.rating}
             onChange={(e) => this.handleChange(e)}
           />
-          <button type="submit">Submit</button>
+          <button style={myStyles.button} type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
@@ -158,9 +170,31 @@ class PostForm extends Component {
 const myStyles = {
   form: {
     display: "flex",
-    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginRight: "20%",
+    marginLeft: "20%",
+    flexDirection: "column",
+  },
+  input: {
+    width: "70%",
+    height: 32,
+    fontSize: 20,
+    marginBottom: 4,
+  },
+  button: {
+    alignSelf: "center",
+    // backgroundColor: "#F96295",
+    backgroundColor: "#ff62a1",
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 10,
+    marginTop: 5,
+    width: "50%",
+    borderRadius: 10,
+    fontSize: 16,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 };
 
