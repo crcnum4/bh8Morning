@@ -1,22 +1,25 @@
 import React, { Component } from "react";
 
+const INITIAL_STATE = {
+  id: 0,
+  posterName: "",
+  resourceAuthor: "",
+  jobSkillLevel: "",
+  cohort: "",
+  title: "",
+  categories: "",
+  summary: "",
+  link: "",
+  resourceType: "",
+  datePublished: "",
+  videoLength: "",
+  timeToComplete: "",
+  rating: "",
+  comments: [],
+};
+
 class PostForm extends Component {
-  state = {
-    posterName: "",
-    resourceAuthor: "",
-    jobSkillLevel: "",
-    cohort: "",
-    title: "",
-    categories: "",
-    summary: "",
-    link: "",
-    resourceType: "",
-    datePublished: null,
-    videoLength: "",
-    timeToComplete: "",
-    rating: "",
-    comments: [],
-  };
+  state = { ...INITIAL_STATE };
 
   handleChange = (e) => {
     this.setState({
@@ -27,27 +30,11 @@ class PostForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hi");
     // add any form validation
     const postData = { ...this.state };
     postData.categories = postData.categories.split(",");
     this.props.addPost(postData);
-    this.setState({
-      posterName: "",
-      resourceAuthor: "",
-      jobSkillLevel: "",
-      cohort: "",
-      title: "",
-      categories: "",
-      summary: "",
-      link: "",
-      resourceType: "",
-      datePublished: null,
-      videoLength: "",
-      timeToComplete: "",
-      rating: "",
-      comments: [],
-    });
+    this.setState({ ...INITIAL_STATE });
   };
 
   render() {
