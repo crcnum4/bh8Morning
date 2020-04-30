@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "./common/Button";
 
 const INITIAL_STATE = {
   id: 0,
@@ -145,9 +146,7 @@ class PostForm extends Component {
             value={this.state.rating}
             onChange={(e) => this.handleChange(e)}
           />
-          <button style={myStyles.button} type="submit">
-            Submit
-          </button>
+          <Button type="submit">Select</Button>
         </form>
       </div>
     );
@@ -168,20 +167,6 @@ const myStyles = {
     height: 32,
     fontSize: 20,
     marginBottom: 4,
-  },
-  button: {
-    alignSelf: "center",
-    // backgroundColor: "#F96295",
-    backgroundColor: "#ff62a1",
-    marginLeft: 5,
-    marginRight: 5,
-    marginBottom: 10,
-    marginTop: 5,
-    width: "50%",
-    borderRadius: 10,
-    fontSize: 16,
-    paddingTop: 10,
-    paddingBottom: 10,
   },
 };
 
