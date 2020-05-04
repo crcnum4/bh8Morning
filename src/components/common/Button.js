@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = (props) => {
   return (
-    <button style={myStyles.button} {...props}>
+    <button style={{ ...myStyles.button, ...props.myStyle }} {...props}>
       {props.children}
     </button>
   );
@@ -22,6 +22,7 @@ const myStyles = {
     fontSize: 16,
     paddingTop: 10,
     paddingBottom: 10,
+    fontWeight: "bold",
   },
 };
 
