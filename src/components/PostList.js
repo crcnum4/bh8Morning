@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { increment } from "../actions";
 import Post from "./Post";
 
 /*
@@ -19,12 +21,25 @@ class PostList extends Component {
       (post) =>
         post.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
         post.summary.toLowerCase().indexOf(query.toLowerCase()) > 0
+      // {
+      //   const lowPost = post.title.toLowerCase();
+      //   const lowQuery = query.toLowerCase();
+      //   const index = lowPost.indexOf(lowQuery);
+      //   if (index >= 0) {
+      //     return true;
+      //   }
+      //   return false;
+      // }
     );
 
     this.setState({
       query: query,
       filteredPosts: newPosts,
     });
+  };
+
+  handleClick = () => {
+    this.props.increment(this.props.count);
   };
 
   renderPosts = () => {
@@ -61,6 +76,10 @@ class PostList extends Component {
           </p>
         </div>
         <div className="postList">{this.renderPosts()}</div>
+        <div className="footer">
+          <button onClick={this.handleClick}>increase</button>
+          <p>{this.props.count}</p>
+        </div>
       </div>
     );
   }
@@ -82,4 +101,12 @@ const myStyles = {
   },
 };
 
-export default PostList;
+const mapStoreToProps = (store) => {
+  return {
+    count: store.posts.count,
+  };
+};
+
+export default connect(mapStoreToProps, {
+  increment,
+})(PostList);
