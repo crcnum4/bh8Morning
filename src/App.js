@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./store";
 import "./App.css";
 import PostList from "./components/PostList";
 import Navbar from "./components/Navbar";
@@ -36,28 +34,26 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <BrowserRouter>
-          <div className="App">
-            <Navbar />
-            <Switch>
-              <Route path="/" exact>
-                <PostList
-                  posts={this.state.posts}
-                  handleSelect={this.handleSelect}
-                />
-              </Route>
-              <Route path="/add" exact>
-                <PostForm addPost={this.addPost} />
-              </Route>
-              <Route path="/post/:postId">
-                {/* <ViewPost post={this.state.posts[this.state.selected - 1]} /> */}
-                <ViewPost post={this.state.posts} />
-              </Route>
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </Provider>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route path="/" exact>
+              <PostList
+                // posts={this.state.posts}
+                handleSelect={this.handleSelect}
+              />
+            </Route>
+            <Route path="/add" exact>
+              <PostForm addPost={this.addPost} />
+            </Route>
+            <Route path="/post/:postId">
+              {/* <ViewPost post={this.state.posts[this.state.selected - 1]} /> */}
+              <ViewPost post={this.state.posts} />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

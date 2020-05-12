@@ -1,18 +1,28 @@
-const INITIAL_STATE = {
-  list: [],
+import posts from "../mock/posts";
+
+const INITIAL_STORE = {
+  list: [...posts],
   loading: false,
   errors: {},
   count: 0,
 };
 
-export default (state = INITIAL_STATE, action) => {
+export default (store = INITIAL_STORE, action) => {
   switch (action.type) {
     case "INCREMENT":
       return {
-        ...state,
+        ...store,
         count: action.payload,
       };
+    case "SUBMIT_FORM":
+      // not needed in normal app. ID is incremented automatically.
+      const newPost = action.payload;
+      newPost.id = store.list[store.list.length - 1].id + 1;
+      return {
+        ...store,
+        list: [...store.list, newPost],
+      };
     default:
-      return state;
+      return store;
   }
 };

@@ -11,13 +11,13 @@ import Post from "./Post";
 class PostList extends Component {
   state = {
     query: "",
-    filteredPosts: [...this.props.posts],
+    filteredPosts: [...this.props.posts.list],
   };
 
   handleChange = (e) => {
     const query = e.target.value;
 
-    const newPosts = this.props.posts.filter(
+    const newPosts = this.props.posts.list.filter(
       (post) =>
         post.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
         post.summary.toLowerCase().indexOf(query.toLowerCase()) > 0
@@ -39,7 +39,7 @@ class PostList extends Component {
   };
 
   handleClick = () => {
-    this.props.increment(this.props.count);
+    this.props.increment(this.props.posts.count);
   };
 
   renderPosts = () => {
@@ -66,11 +66,10 @@ class PostList extends Component {
         {/* TODO: add searchbar */}
         <div style={myStyles.searchBar}>
           <p>
-            <span role="img">🔍</span>
             <input
               style={myStyles.input}
               type="text"
-              placeholder="search titles"
+              placeholder="🔍search titles"
               onChange={this.handleChange}
             />
           </p>
@@ -78,7 +77,7 @@ class PostList extends Component {
         <div className="postList">{this.renderPosts()}</div>
         <div className="footer">
           <button onClick={this.handleClick}>increase</button>
-          <p>{this.props.count}</p>
+          <p>{this.props.posts.count}</p>
         </div>
       </div>
     );
@@ -103,10 +102,14 @@ const myStyles = {
 
 const mapStoreToProps = (store) => {
   return {
-    count: store.posts.count,
+    posts: store.posts,
   };
 };
 
-export default connect(mapStoreToProps, {
-  increment,
-})(PostList);
+const mapActionsToProps = () => {
+  return {
+    increment,
+  };
+};
+
+export default connect(mapStoreToProps, mapActionsToProps())(PostList);
