@@ -12,7 +12,6 @@ class Post extends Component {
   };
 
   handleClick = () => {
-    this.props.handleSelect(this.props.post.id);
     this.setState({ clicked: true });
   };
 

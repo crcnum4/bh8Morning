@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import Button from "./common/Button";
 
 class ViewPost extends Component {
@@ -54,8 +55,12 @@ class ViewPost extends Component {
   };
 
   render() {
-    const { postId } = this.props.match.params;
-    const post = this.props.post[postId - 1];
+    let { postId } = this.props.match.params;
+    postId = parseInt(postId);
+    const postIndex = this.props.posts.list.findIndex(
+      (item) => item.id === postId
+    );
+    const post = this.props.posts.list[postIndex];
     return (
       <div style={myStyles.container}>
         <h3>{post.title}</h3>
@@ -129,4 +134,10 @@ const myStyles = {
   },
 };
 
-export default withRouter(ViewPost);
+const mapStoreToProps = (store) => {
+  return {
+    posts: store.posts,
+  };
+};
+
+export default connect(mapStoreToProps)(withRouter(ViewPost));

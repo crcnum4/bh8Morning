@@ -1,3 +1,5 @@
+import { CHANGE_FORM, SUBMIT_FORM } from "../actions/types";
+
 const INITIAL_STORE = {
   form: {
     id: 0,
@@ -22,7 +24,7 @@ const INITIAL_STORE = {
 
 export default (store = INITIAL_STORE, action) => {
   switch (action.type) {
-    case "CHANGE":
+    case CHANGE_FORM:
       return {
         ...store,
         form: {
@@ -30,7 +32,7 @@ export default (store = INITIAL_STORE, action) => {
           [action.payload.field]: action.payload.value,
         },
       };
-    case "SUBMIT_FORM":
+    case SUBMIT_FORM:
       return {
         ...INITIAL_STORE,
       };

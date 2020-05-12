@@ -1,8 +1,8 @@
-const SUBMIT_CHANGE = "SUBMIT_CHANGE"
+import { CHANGE_FORM, SUBMIT_FORM } from "./types";
 
 export const changeForm = (field, value) => (dispatch) => {
   dispatch({
-    type: "CHANGE",
+    type: CHANGE_FORM,
     payload: {
       field,
       value,
@@ -13,7 +13,7 @@ export const changeForm = (field, value) => (dispatch) => {
 export const submitForm = (data) => (dispatch) => {
   data.categories = data.categories.split(",");
   dispatch({
-    type: SUBMIT_CHANGE,
+    type: SUBMIT_FORM,
     payload: data,
   });
 };

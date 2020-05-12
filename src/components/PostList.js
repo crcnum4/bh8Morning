@@ -48,13 +48,7 @@ class PostList extends Component {
     // };
 
     const display = this.state.filteredPosts.map((post) => {
-      return (
-        <Post
-          post={post}
-          key={post.id}
-          handleSelect={this.props.handleSelect}
-        />
-      );
+      return <Post post={post} key={post.id} />;
     });
     // [<Post post=[0]/>, <Post post[1]/>, <Post post[2]/>]
     return display;

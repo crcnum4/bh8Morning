@@ -1,4 +1,5 @@
 import posts from "../mock/posts";
+import { INCREMENT, SUBMIT_FORM } from "../actions/types";
 
 const INITIAL_STORE = {
   list: [...posts],
@@ -9,12 +10,12 @@ const INITIAL_STORE = {
 
 export default (store = INITIAL_STORE, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case INCREMENT:
       return {
         ...store,
         count: action.payload,
       };
-    case "SUBMIT_FORM":
+    case SUBMIT_FORM:
       // not needed in normal app. ID is incremented automatically.
       const newPost = action.payload;
       newPost.id = store.list[store.list.length - 1].id + 1;
