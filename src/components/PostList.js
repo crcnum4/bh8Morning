@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { increment, changeQuery } from "../actions";
 import Post from "./Post";
@@ -8,57 +8,46 @@ import Post from "./Post";
   it has no state because...
 */
 
-class PostList extends Component {
-  // state = {
-  //   query: "",
-  //   filteredPosts: [...this.props.posts.list],
-  // };
+const PostList = (props) => {
 
-  handleChange = (e) => {
+  const handleChange = (e) => {
     const query = e.target.value;
 
-    this.props.changeQuery(query, this.props.posts.list);
+    props.changeQuery(query, props.posts.list);
   };
 
-  handleClick = () => {
-    this.props.increment(this.props.posts.count);
+  const handleClick = () => {
+    props.increment(props.posts.count);
   };
 
-  renderPosts = () => {
-    // const mapFunction = (post) => {
-    //   return <Post post={post} />;
-    // };
+  const renderPosts = () => {
 
-    const display = this.props.search.list.map((post) => {
+    const display = props.search.list.map((post) => {
       return <Post post={post} key={post.id} />;
     });
-    // [<Post post=[0]/>, <Post post[1]/>, <Post post[2]/>]
     return display;
   };
 
-  render() {
-    return (
-      <div>
-        {/* TODO: add searchbar */}
-        <div style={myStyles.searchBar}>
-          <p>
-            <input
-              style={myStyles.input}
-              type="text"
-              placeholder="🔍search titles"
-              value={this.props.search.query}
-              onChange={this.handleChange}
-            />
-          </p>
-        </div>
-        <div className="postList">{this.renderPosts()}</div>
-        <div className="footer">
-          <button onClick={this.handleClick}>increase</button>
-          <p>{this.props.posts.count}</p>
-        </div>
+  return (
+    <div>
+      <div style={myStyles.searchBar}>
+        <p>
+          <input
+            style={myStyles.input}
+            type="text"
+            placeholder="🔍search titles"
+            value={props.search.query}
+            onChange={handleChange}
+          />
+        </p>
       </div>
-    );
-  }
+      <div className="postList">{renderPosts()}</div>
+      <div className="footer">
+        <button onClick={handleClick}>increase</button>
+        <p>{props.posts.count}</p>
+      </div>
+    </div>
+  );
 }
 
 const myStyles = {
