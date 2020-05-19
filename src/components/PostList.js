@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { increment } from "../actions";
+import { increment, changeQuery } from "../actions";
 import Post from "./Post";
 
 /*
@@ -9,33 +9,15 @@ import Post from "./Post";
 */
 
 class PostList extends Component {
-  state = {
-    query: "",
-    filteredPosts: [...this.props.posts.list],
-  };
+  // state = {
+  //   query: "",
+  //   filteredPosts: [...this.props.posts.list],
+  // };
 
   handleChange = (e) => {
     const query = e.target.value;
 
-    const newPosts = this.props.posts.list.filter(
-      (post) =>
-        post.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
-        post.summary.toLowerCase().indexOf(query.toLowerCase()) > 0
-      // {
-      //   const lowPost = post.title.toLowerCase();
-      //   const lowQuery = query.toLowerCase();
-      //   const index = lowPost.indexOf(lowQuery);
-      //   if (index >= 0) {
-      //     return true;
-      //   }
-      //   return false;
-      // }
-    );
-
-    this.setState({
-      query: query,
-      filteredPosts: newPosts,
-    });
+    this.props.changeQuery(query, this.props.posts.list);
   };
 
   handleClick = () => {
@@ -47,7 +29,7 @@ class PostList extends Component {
     //   return <Post post={post} />;
     // };
 
-    const display = this.state.filteredPosts.map((post) => {
+    const display = this.props.search.list.map((post) => {
       return <Post post={post} key={post.id} />;
     });
     // [<Post post=[0]/>, <Post post[1]/>, <Post post[2]/>]
@@ -64,6 +46,7 @@ class PostList extends Component {
               style={myStyles.input}
               type="text"
               placeholder="🔍search titles"
+              value={this.props.search.query}
               onChange={this.handleChange}
             />
           </p>
@@ -95,14 +78,18 @@ const myStyles = {
 };
 
 const mapStoreToProps = (store) => {
+
+  // PostList.props.p = store.posts
   return {
     posts: store.posts,
+    search: store.search
   };
 };
 
 const mapActionsToProps = () => {
   return {
     increment,
+    changeQuery
   };
 };
 
