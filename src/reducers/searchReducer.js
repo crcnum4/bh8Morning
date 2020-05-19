@@ -1,8 +1,7 @@
 import {CHANGE_QUERY} from '../actions/types'
-import posts from "../mock/posts";
 
 const INITIAL_STORE = {
-  list: [...posts],
+  list: [],
   query: "",
   loading: false,
   errors: {}

@@ -9,10 +9,21 @@ import Post from "./Post";
 */
 
 class PostList extends Component {
-  // state = {
-  //   query: "",
-  //   filteredPosts: [...this.props.posts.list],
-  // };
+
+  componentDidMount = () => {
+    console.log('mount');
+    if (this.props.search.list.length === 0) {
+      this.props.changeQuery("", this.props.posts.list)
+    }
+  }
+
+  componentWillUnmount = () => {
+    console.log('unmount');
+  }
+
+  componentDidUpdate = () => {
+    console.log('update')
+  }
 
   handleChange = (e) => {
     const query = e.target.value;
@@ -25,21 +36,16 @@ class PostList extends Component {
   };
 
   renderPosts = () => {
-    // const mapFunction = (post) => {
-    //   return <Post post={post} />;
-    // };
 
     const display = this.props.search.list.map((post) => {
       return <Post post={post} key={post.id} />;
     });
-    // [<Post post=[0]/>, <Post post[1]/>, <Post post[2]/>]
     return display;
   };
 
   render() {
     return (
       <div>
-        {/* TODO: add searchbar */}
         <div style={myStyles.searchBar}>
           <p>
             <input
@@ -79,7 +85,6 @@ const myStyles = {
 
 const mapStoreToProps = (store) => {
 
-  // PostList.props.p = store.posts
   return {
     posts: store.posts,
     search: store.search
